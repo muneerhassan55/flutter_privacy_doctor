@@ -1,0 +1,188 @@
+{
+  "_schema_version": "1.0",
+  "_readme": "Add entries for pub.dev packages that are known to ship (or not ship) a PrivacyInfo.xcprivacy file. Fields: 'package' (pub package name), 'sinceVersion' (first version with manifest, null if never), 'hasManifest' (bool), 'note' (optional free text), 'source' (URL where this was verified).",
+  "packages": [
+    {
+      "package": "firebase_core",
+      "hasManifest": true,
+      "sinceVersion": "2.24.2",
+      "note": "Firebase iOS SDK 10.19.0+ ships PrivacyInfo.xcprivacy",
+      "source": "https://firebase.google.com/support/release-notes/ios"
+    },
+    {
+      "package": "firebase_analytics",
+      "hasManifest": true,
+      "sinceVersion": "10.7.4",
+      "note": "Firebase Analytics iOS SDK includes privacy manifest",
+      "source": "https://firebase.google.com/support/release-notes/ios"
+    },
+    {
+      "package": "firebase_crashlytics",
+      "hasManifest": true,
+      "sinceVersion": "3.4.7",
+      "note": "Firebase Crashlytics iOS SDK includes privacy manifest",
+      "source": "https://firebase.google.com/support/release-notes/ios"
+    },
+    {
+      "package": "firebase_messaging",
+      "hasManifest": true,
+      "sinceVersion": "14.7.7",
+      "note": "Firebase Messaging iOS SDK includes privacy manifest",
+      "source": "https://firebase.google.com/support/release-notes/ios"
+    },
+    {
+      "package": "firebase_auth",
+      "hasManifest": true,
+      "sinceVersion": "4.16.0",
+      "note": "Firebase Auth iOS SDK includes privacy manifest",
+      "source": "https://firebase.google.com/support/release-notes/ios"
+    },
+    {
+      "package": "firebase_storage",
+      "hasManifest": true,
+      "sinceVersion": "11.6.0",
+      "note": "Firebase Storage iOS SDK includes privacy manifest",
+      "source": "https://firebase.google.com/support/release-notes/ios"
+    },
+    {
+      "package": "firebase_remote_config",
+      "hasManifest": true,
+      "sinceVersion": "4.4.4",
+      "note": "Firebase Remote Config iOS SDK includes privacy manifest",
+      "source": "https://firebase.google.com/support/release-notes/ios"
+    },
+    {
+      "package": "cloud_firestore",
+      "hasManifest": true,
+      "sinceVersion": "4.15.8",
+      "note": "Cloud Firestore iOS SDK includes privacy manifest",
+      "source": "https://firebase.google.com/support/release-notes/ios"
+    },
+    {
+      "package": "google_mobile_ads",
+      "hasManifest": true,
+      "sinceVersion": "4.0.0",
+      "note": "Google Mobile Ads SDK 11+ ships privacy manifest",
+      "source": "https://developers.google.com/admob/ios/privacy"
+    },
+    {
+      "package": "sentry_flutter",
+      "hasManifest": true,
+      "sinceVersion": "7.13.1",
+      "note": "Sentry Flutter SDK ships PrivacyInfo.xcprivacy since 7.13.1",
+      "source": "https://github.com/getsentry/sentry-cocoa/releases"
+    },
+    {
+      "package": "google_sign_in",
+      "hasManifest": false,
+      "sinceVersion": null,
+      "note": "No privacy manifest detected as of pub 6.2.x — verify manually",
+      "source": "https://pub.dev/packages/google_sign_in"
+    },
+    {
+      "package": "sign_in_with_apple",
+      "hasManifest": false,
+      "sinceVersion": null,
+      "note": "Pure Swift/ObjC wrapper — no manifest bundled, but Apple Sign-In itself is Apple-side",
+      "source": "https://pub.dev/packages/sign_in_with_apple"
+    },
+    {
+      "package": "flutter_local_notifications",
+      "hasManifest": false,
+      "sinceVersion": null,
+      "note": "No privacy manifest bundled as of 16.x — verify manually",
+      "source": "https://pub.dev/packages/flutter_local_notifications"
+    },
+    {
+      "package": "shared_preferences",
+      "hasManifest": true,
+      "sinceVersion": "2.2.3",
+      "note": "Uses NSUserDefaults — required reason API. Manifest added in 2.2.3",
+      "source": "https://github.com/flutter/packages/pull/5715"
+    },
+    {
+      "package": "path_provider",
+      "hasManifest": true,
+      "sinceVersion": "2.1.2",
+      "note": "Accesses file timestamps — required reason API. Manifest added in 2.1.2",
+      "source": "https://github.com/flutter/packages/pull/5715"
+    },
+    {
+      "package": "camera",
+      "hasManifest": false,
+      "sinceVersion": null,
+      "note": "Camera plugin — no manifest detected. Verify manually on latest version",
+      "source": "https://pub.dev/packages/camera"
+    },
+    {
+      "package": "image_picker",
+      "hasManifest": false,
+      "sinceVersion": null,
+      "note": "No privacy manifest bundled — verify manually",
+      "source": "https://pub.dev/packages/image_picker"
+    },
+    {
+      "package": "permission_handler",
+      "hasManifest": false,
+      "sinceVersion": null,
+      "note": "Permission handler — no manifest bundled. Verify manually",
+      "source": "https://pub.dev/packages/permission_handler"
+    },
+    {
+      "package": "geolocator",
+      "hasManifest": false,
+      "sinceVersion": null,
+      "note": "Location plugin — no manifest detected. Verify manually",
+      "source": "https://pub.dev/packages/geolocator"
+    },
+    {
+      "package": "url_launcher",
+      "hasManifest": true,
+      "sinceVersion": "6.2.4",
+      "note": "Manifest added in 6.2.4 as part of Flutter team's manifest sweep",
+      "source": "https://github.com/flutter/packages/pull/5715"
+    },
+    {
+      "package": "webview_flutter",
+      "hasManifest": true,
+      "sinceVersion": "4.5.0",
+      "note": "WKWebView usage — manifest included since 4.5.0",
+      "source": "https://github.com/flutter/packages/pull/5715"
+    },
+    {
+      "package": "flutter_secure_storage",
+      "hasManifest": false,
+      "sinceVersion": null,
+      "note": "Keychain-based storage — no manifest detected. Verify manually",
+      "source": "https://pub.dev/packages/flutter_secure_storage"
+    },
+    {
+      "package": "in_app_purchase",
+      "hasManifest": true,
+      "sinceVersion": "3.1.13",
+      "note": "StoreKit usage — manifest added in 3.1.13",
+      "source": "https://github.com/flutter/packages/pull/5715"
+    },
+    {
+      "package": "connectivity_plus",
+      "hasManifest": false,
+      "sinceVersion": null,
+      "note": "Network connectivity — no manifest detected. Verify manually",
+      "source": "https://pub.dev/packages/connectivity_plus"
+    },
+    {
+      "package": "device_info_plus",
+      "hasManifest": false,
+      "sinceVersion": null,
+      "note": "Device info — reads device identifiers. No manifest detected. Verify manually",
+      "source": "https://pub.dev/packages/device_info_plus"
+    },
+    {
+      "package": "package_info_plus",
+      "hasManifest": false,
+      "sinceVersion": null,
+      "note": "Package info — no manifest detected. Verify manually",
+      "source": "https://pub.dev/packages/package_info_plus"
+    }
+  ]
+}

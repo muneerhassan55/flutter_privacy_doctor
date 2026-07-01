@@ -1,0 +1,653 @@
+{
+  "_schema_version": "1.0",
+  "_readme": "Community-maintained mapping of pub.dev packages to their typical data collection. Each entry covers what data the SDK typically collects, how it is used, and links to the SDK's own privacy documentation. This is a best-effort draft — always verify against the SDK's current docs. To add an entry: follow the schema below, include a 'source' URL, open a PR.",
+  "_schema": {
+    "package": "pub.dev package name",
+    "displayName": "Human-readable SDK name",
+    "description": "Brief description of what the SDK does",
+    "dataCategories": [
+      {
+        "appStoreCategory": "Apple App Store privacy label category (e.g. Identifiers, Usage Data)",
+        "appStoreDataType": "Specific data type under that category",
+        "playStoreCategory": "Google Play Data Safety category",
+        "playStoreDataType": "Specific data type under that category",
+        "linkedToIdentity": "bool — does the SDK link this data to the user's identity?",
+        "usedForTracking": "bool — is this used for cross-app/cross-site tracking?",
+        "purpose": ["array of purposes: analytics, app_functionality, developer_sdks, advertising, crash_reporting, personalization"]
+      }
+    ],
+    "requiresPrivacyManifest": "bool — does this SDK use required-reason APIs on iOS?",
+    "citationUrl": "Primary source URL (SDK's own privacy docs)",
+    "notes": "Optional free-text notes"
+  },
+  "packages": [
+    {
+      "package": "firebase_analytics",
+      "displayName": "Firebase Analytics",
+      "description": "Google Firebase analytics — collects app usage events and user properties",
+      "dataCategories": [
+        {
+          "appStoreCategory": "Identifiers",
+          "appStoreDataType": "Device ID",
+          "playStoreCategory": "Device or other identifiers",
+          "playStoreDataType": "Device or other identifiers",
+          "linkedToIdentity": false,
+          "usedForTracking": false,
+          "purpose": ["analytics"]
+        },
+        {
+          "appStoreCategory": "Usage Data",
+          "appStoreDataType": "Product Interaction",
+          "playStoreCategory": "App activity",
+          "playStoreDataType": "App interactions",
+          "linkedToIdentity": false,
+          "usedForTracking": false,
+          "purpose": ["analytics"]
+        }
+      ],
+      "requiresPrivacyManifest": true,
+      "citationUrl": "https://firebase.google.com/support/privacy",
+      "notes": "Analytics Advertising ID collection can be disabled. Review your Firebase Analytics configuration."
+    },
+    {
+      "package": "firebase_crashlytics",
+      "displayName": "Firebase Crashlytics",
+      "description": "Real-time crash reporting",
+      "dataCategories": [
+        {
+          "appStoreCategory": "Diagnostics",
+          "appStoreDataType": "Crash Data",
+          "playStoreCategory": "App info and performance",
+          "playStoreDataType": "Crash logs",
+          "linkedToIdentity": false,
+          "usedForTracking": false,
+          "purpose": ["crash_reporting", "analytics"]
+        },
+        {
+          "appStoreCategory": "Diagnostics",
+          "appStoreDataType": "Performance Data",
+          "playStoreCategory": "App info and performance",
+          "playStoreDataType": "Diagnostics",
+          "linkedToIdentity": false,
+          "usedForTracking": false,
+          "purpose": ["crash_reporting"]
+        }
+      ],
+      "requiresPrivacyManifest": true,
+      "citationUrl": "https://firebase.google.com/support/privacy",
+      "notes": "Crashlytics collects stack traces, device state at crash time, and a Crashlytics installation UUID."
+    },
+    {
+      "package": "firebase_messaging",
+      "displayName": "Firebase Cloud Messaging",
+      "description": "Push notifications via FCM",
+      "dataCategories": [
+        {
+          "appStoreCategory": "Identifiers",
+          "appStoreDataType": "Device ID",
+          "playStoreCategory": "Device or other identifiers",
+          "playStoreDataType": "Device or other identifiers",
+          "linkedToIdentity": false,
+          "usedForTracking": false,
+          "purpose": ["app_functionality"]
+        }
+      ],
+      "requiresPrivacyManifest": true,
+      "citationUrl": "https://firebase.google.com/support/privacy",
+      "notes": "FCM registration token is a device identifier used for push delivery."
+    },
+    {
+      "package": "firebase_auth",
+      "displayName": "Firebase Authentication",
+      "description": "User authentication via Firebase",
+      "dataCategories": [
+        {
+          "appStoreCategory": "Contact Info",
+          "appStoreDataType": "Email Address",
+          "playStoreCategory": "Personal info",
+          "playStoreDataType": "Email address",
+          "linkedToIdentity": true,
+          "usedForTracking": false,
+          "purpose": ["app_functionality"]
+        },
+        {
+          "appStoreCategory": "Identifiers",
+          "appStoreDataType": "User ID",
+          "playStoreCategory": "Personal info",
+          "playStoreDataType": "User IDs",
+          "linkedToIdentity": true,
+          "usedForTracking": false,
+          "purpose": ["app_functionality"]
+        }
+      ],
+      "requiresPrivacyManifest": true,
+      "citationUrl": "https://firebase.google.com/support/privacy",
+      "notes": "Actual data collected depends on the auth providers you enable (email, phone, Google, Apple etc.)"
+    },
+    {
+      "package": "cloud_firestore",
+      "displayName": "Cloud Firestore",
+      "description": "NoSQL cloud database",
+      "dataCategories": [
+        {
+          "appStoreCategory": "Other Data",
+          "appStoreDataType": "Other Data Types",
+          "playStoreCategory": "App activity",
+          "playStoreDataType": "Other user-generated content",
+          "linkedToIdentity": true,
+          "usedForTracking": false,
+          "purpose": ["app_functionality"]
+        }
+      ],
+      "requiresPrivacyManifest": true,
+      "citationUrl": "https://firebase.google.com/support/privacy",
+      "notes": "Data categories depend entirely on what your app stores in Firestore — the SDK itself is a conduit."
+    },
+    {
+      "package": "firebase_remote_config",
+      "displayName": "Firebase Remote Config",
+      "description": "Remote feature flags and config",
+      "dataCategories": [
+        {
+          "appStoreCategory": "Identifiers",
+          "appStoreDataType": "Device ID",
+          "playStoreCategory": "Device or other identifiers",
+          "playStoreDataType": "Device or other identifiers",
+          "linkedToIdentity": false,
+          "usedForTracking": false,
+          "purpose": ["analytics", "app_functionality"]
+        }
+      ],
+      "requiresPrivacyManifest": true,
+      "citationUrl": "https://firebase.google.com/support/privacy",
+      "notes": "Remote Config sends device/app context to serve appropriate config values."
+    },
+    {
+      "package": "firebase_storage",
+      "displayName": "Firebase Cloud Storage",
+      "description": "Cloud file storage",
+      "dataCategories": [
+        {
+          "appStoreCategory": "Other Data",
+          "appStoreDataType": "Other Data Types",
+          "playStoreCategory": "Files and docs",
+          "playStoreDataType": "Files and docs",
+          "linkedToIdentity": true,
+          "usedForTracking": false,
+          "purpose": ["app_functionality"]
+        }
+      ],
+      "requiresPrivacyManifest": true,
+      "citationUrl": "https://firebase.google.com/support/privacy",
+      "notes": "Storage is a conduit — data categories depend on what your app uploads."
+    },
+    {
+      "package": "google_mobile_ads",
+      "displayName": "Google Mobile Ads (AdMob)",
+      "description": "Advertising SDK from Google/AdMob",
+      "dataCategories": [
+        {
+          "appStoreCategory": "Identifiers",
+          "appStoreDataType": "Device ID",
+          "playStoreCategory": "Device or other identifiers",
+          "playStoreDataType": "Device or other identifiers",
+          "linkedToIdentity": false,
+          "usedForTracking": true,
+          "purpose": ["advertising"]
+        },
+        {
+          "appStoreCategory": "Location",
+          "appStoreDataType": "Coarse Location",
+          "playStoreCategory": "Location",
+          "playStoreDataType": "Approximate location",
+          "linkedToIdentity": false,
+          "usedForTracking": true,
+          "purpose": ["advertising"]
+        },
+        {
+          "appStoreCategory": "Usage Data",
+          "appStoreDataType": "Product Interaction",
+          "playStoreCategory": "App activity",
+          "playStoreDataType": "App interactions",
+          "linkedToIdentity": false,
+          "usedForTracking": true,
+          "purpose": ["advertising", "analytics"]
+        }
+      ],
+      "requiresPrivacyManifest": true,
+      "citationUrl": "https://support.google.com/admob/answer/6128543",
+      "notes": "AdMob requires ATT prompt on iOS 14.5+. Data collected varies by ad format and user consent."
+    },
+    {
+      "package": "sentry_flutter",
+      "displayName": "Sentry",
+      "description": "Error tracking and performance monitoring",
+      "dataCategories": [
+        {
+          "appStoreCategory": "Diagnostics",
+          "appStoreDataType": "Crash Data",
+          "playStoreCategory": "App info and performance",
+          "playStoreDataType": "Crash logs",
+          "linkedToIdentity": false,
+          "usedForTracking": false,
+          "purpose": ["crash_reporting"]
+        },
+        {
+          "appStoreCategory": "Diagnostics",
+          "appStoreDataType": "Performance Data",
+          "playStoreCategory": "App info and performance",
+          "playStoreDataType": "Diagnostics",
+          "linkedToIdentity": false,
+          "usedForTracking": false,
+          "purpose": ["analytics", "crash_reporting"]
+        },
+        {
+          "appStoreCategory": "Identifiers",
+          "appStoreDataType": "Device ID",
+          "playStoreCategory": "Device or other identifiers",
+          "playStoreDataType": "Device or other identifiers",
+          "linkedToIdentity": false,
+          "usedForTracking": false,
+          "purpose": ["crash_reporting"]
+        }
+      ],
+      "requiresPrivacyManifest": true,
+      "citationUrl": "https://sentry.io/privacy/",
+      "notes": "Sentry can optionally collect user email/name if you call Sentry.configureScope — disable if not needed."
+    },
+    {
+      "package": "google_sign_in",
+      "displayName": "Google Sign-In",
+      "description": "OAuth sign-in via Google",
+      "dataCategories": [
+        {
+          "appStoreCategory": "Contact Info",
+          "appStoreDataType": "Email Address",
+          "playStoreCategory": "Personal info",
+          "playStoreDataType": "Email address",
+          "linkedToIdentity": true,
+          "usedForTracking": false,
+          "purpose": ["app_functionality"]
+        },
+        {
+          "appStoreCategory": "Contact Info",
+          "appStoreDataType": "Name",
+          "playStoreCategory": "Personal info",
+          "playStoreDataType": "Name",
+          "linkedToIdentity": true,
+          "usedForTracking": false,
+          "purpose": ["app_functionality"]
+        },
+        {
+          "appStoreCategory": "Photos and Videos",
+          "appStoreDataType": "Photos",
+          "playStoreCategory": "Photos and videos",
+          "playStoreDataType": "Photos",
+          "linkedToIdentity": true,
+          "usedForTracking": false,
+          "purpose": ["app_functionality"]
+        }
+      ],
+      "requiresPrivacyManifest": false,
+      "citationUrl": "https://developers.google.com/identity/sign-in/ios/data-disclosure",
+      "notes": "Profile photo is fetched from Google account. Only the scopes you request are collected."
+    },
+    {
+      "package": "sign_in_with_apple",
+      "displayName": "Sign in with Apple",
+      "description": "Apple OAuth sign-in",
+      "dataCategories": [
+        {
+          "appStoreCategory": "Contact Info",
+          "appStoreDataType": "Email Address",
+          "playStoreCategory": "Personal info",
+          "playStoreDataType": "Email address",
+          "linkedToIdentity": true,
+          "usedForTracking": false,
+          "purpose": ["app_functionality"]
+        },
+        {
+          "appStoreCategory": "Contact Info",
+          "appStoreDataType": "Name",
+          "playStoreCategory": "Personal info",
+          "playStoreDataType": "Name",
+          "linkedToIdentity": true,
+          "usedForTracking": false,
+          "purpose": ["app_functionality"]
+        }
+      ],
+      "requiresPrivacyManifest": false,
+      "citationUrl": "https://developer.apple.com/sign-in-with-apple/",
+      "notes": "Apple may anonymize the email. Name is only returned on first login."
+    },
+    {
+      "package": "geolocator",
+      "displayName": "Geolocator",
+      "description": "Device GPS/location access",
+      "dataCategories": [
+        {
+          "appStoreCategory": "Location",
+          "appStoreDataType": "Precise Location",
+          "playStoreCategory": "Location",
+          "playStoreDataType": "Precise location",
+          "linkedToIdentity": false,
+          "usedForTracking": false,
+          "purpose": ["app_functionality"]
+        }
+      ],
+      "requiresPrivacyManifest": false,
+      "citationUrl": "https://pub.dev/packages/geolocator",
+      "notes": "Mark 'linked to identity' and 'used for tracking' as true if you store or share location data."
+    },
+    {
+      "package": "camera",
+      "displayName": "Camera",
+      "description": "Camera access for photos and video",
+      "dataCategories": [
+        {
+          "appStoreCategory": "Photos and Videos",
+          "appStoreDataType": "Photos",
+          "playStoreCategory": "Photos and videos",
+          "playStoreDataType": "Photos",
+          "linkedToIdentity": false,
+          "usedForTracking": false,
+          "purpose": ["app_functionality"]
+        },
+        {
+          "appStoreCategory": "Photos and Videos",
+          "appStoreDataType": "Videos",
+          "playStoreCategory": "Photos and videos",
+          "playStoreDataType": "Videos",
+          "linkedToIdentity": false,
+          "usedForTracking": false,
+          "purpose": ["app_functionality"]
+        }
+      ],
+      "requiresPrivacyManifest": false,
+      "citationUrl": "https://pub.dev/packages/camera",
+      "notes": "If photos/videos are uploaded to your servers, set linkedToIdentity and server-side data handling accordingly."
+    },
+    {
+      "package": "image_picker",
+      "displayName": "Image Picker",
+      "description": "Pick photos/videos from device gallery or camera",
+      "dataCategories": [
+        {
+          "appStoreCategory": "Photos and Videos",
+          "appStoreDataType": "Photos",
+          "playStoreCategory": "Photos and videos",
+          "playStoreDataType": "Photos",
+          "linkedToIdentity": false,
+          "usedForTracking": false,
+          "purpose": ["app_functionality"]
+        }
+      ],
+      "requiresPrivacyManifest": false,
+      "citationUrl": "https://pub.dev/packages/image_picker",
+      "notes": "The SDK itself does not transmit data — whether photos leave the device depends on your app logic."
+    },
+    {
+      "package": "shared_preferences",
+      "displayName": "Shared Preferences",
+      "description": "Key-value local storage (NSUserDefaults on iOS)",
+      "dataCategories": [
+        {
+          "appStoreCategory": "Other Data",
+          "appStoreDataType": "Other Data Types",
+          "playStoreCategory": "App activity",
+          "playStoreDataType": "Other app activity",
+          "linkedToIdentity": false,
+          "usedForTracking": false,
+          "purpose": ["app_functionality"]
+        }
+      ],
+      "requiresPrivacyManifest": true,
+      "citationUrl": "https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api",
+      "notes": "Uses NSUserDefaults — a required-reason API on iOS. Privacy manifest is required."
+    },
+    {
+      "package": "path_provider",
+      "displayName": "Path Provider",
+      "description": "File system path access",
+      "dataCategories": [
+        {
+          "appStoreCategory": "Other Data",
+          "appStoreDataType": "Other Data Types",
+          "playStoreCategory": "App activity",
+          "playStoreDataType": "Other app activity",
+          "linkedToIdentity": false,
+          "usedForTracking": false,
+          "purpose": ["app_functionality"]
+        }
+      ],
+      "requiresPrivacyManifest": true,
+      "citationUrl": "https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api",
+      "notes": "Accesses file timestamps — a required-reason API on iOS. Privacy manifest is required."
+    },
+    {
+      "package": "device_info_plus",
+      "displayName": "Device Info Plus",
+      "description": "Reads device model, OS version, and identifiers",
+      "dataCategories": [
+        {
+          "appStoreCategory": "Identifiers",
+          "appStoreDataType": "Device ID",
+          "playStoreCategory": "Device or other identifiers",
+          "playStoreDataType": "Device or other identifiers",
+          "linkedToIdentity": false,
+          "usedForTracking": false,
+          "purpose": ["analytics", "app_functionality"]
+        }
+      ],
+      "requiresPrivacyManifest": false,
+      "citationUrl": "https://pub.dev/packages/device_info_plus",
+      "notes": "On iOS, identifierForVendor is returned (not IDFA). Mark linked-to-identity true if you store it server-side against a user record."
+    },
+    {
+      "package": "flutter_facebook_auth",
+      "displayName": "Facebook Login",
+      "description": "Facebook OAuth sign-in and Graph API",
+      "dataCategories": [
+        {
+          "appStoreCategory": "Contact Info",
+          "appStoreDataType": "Email Address",
+          "playStoreCategory": "Personal info",
+          "playStoreDataType": "Email address",
+          "linkedToIdentity": true,
+          "usedForTracking": true,
+          "purpose": ["app_functionality", "advertising"]
+        },
+        {
+          "appStoreCategory": "Identifiers",
+          "appStoreDataType": "User ID",
+          "playStoreCategory": "Personal info",
+          "playStoreDataType": "User IDs",
+          "linkedToIdentity": true,
+          "usedForTracking": true,
+          "purpose": ["app_functionality", "advertising"]
+        }
+      ],
+      "requiresPrivacyManifest": true,
+      "citationUrl": "https://developers.facebook.com/docs/ios/app-tracking-transparency",
+      "notes": "Facebook SDK requires ATT disclosure on iOS. Data collected depends on permissions requested."
+    },
+    {
+      "package": "flutter_stripe",
+      "displayName": "Stripe Payments",
+      "description": "Payment processing via Stripe",
+      "dataCategories": [
+        {
+          "appStoreCategory": "Financial Info",
+          "appStoreDataType": "Payment Info",
+          "playStoreCategory": "Financial info",
+          "playStoreDataType": "User payment info",
+          "linkedToIdentity": true,
+          "usedForTracking": false,
+          "purpose": ["app_functionality"]
+        }
+      ],
+      "requiresPrivacyManifest": false,
+      "citationUrl": "https://stripe.com/privacy",
+      "notes": "Stripe tokenizes payment data client-side. Raw card numbers never stored on your servers."
+    },
+    {
+      "package": "amplitude_flutter",
+      "displayName": "Amplitude Analytics",
+      "description": "Product analytics and event tracking",
+      "dataCategories": [
+        {
+          "appStoreCategory": "Usage Data",
+          "appStoreDataType": "Product Interaction",
+          "playStoreCategory": "App activity",
+          "playStoreDataType": "App interactions",
+          "linkedToIdentity": false,
+          "usedForTracking": false,
+          "purpose": ["analytics"]
+        },
+        {
+          "appStoreCategory": "Identifiers",
+          "appStoreDataType": "Device ID",
+          "playStoreCategory": "Device or other identifiers",
+          "playStoreDataType": "Device or other identifiers",
+          "linkedToIdentity": false,
+          "usedForTracking": false,
+          "purpose": ["analytics"]
+        }
+      ],
+      "requiresPrivacyManifest": false,
+      "citationUrl": "https://amplitude.com/privacy",
+      "notes": "Amplitude assigns a device_id and optionally a user_id. Disable advertising ID if not needed."
+    },
+    {
+      "package": "mixpanel_flutter",
+      "displayName": "Mixpanel",
+      "description": "Product analytics and user tracking",
+      "dataCategories": [
+        {
+          "appStoreCategory": "Usage Data",
+          "appStoreDataType": "Product Interaction",
+          "playStoreCategory": "App activity",
+          "playStoreDataType": "App interactions",
+          "linkedToIdentity": false,
+          "usedForTracking": false,
+          "purpose": ["analytics"]
+        },
+        {
+          "appStoreCategory": "Identifiers",
+          "appStoreDataType": "User ID",
+          "playStoreCategory": "Personal info",
+          "playStoreDataType": "User IDs",
+          "linkedToIdentity": true,
+          "usedForTracking": false,
+          "purpose": ["analytics"]
+        }
+      ],
+      "requiresPrivacyManifest": false,
+      "citationUrl": "https://mixpanel.com/legal/privacy-policy/",
+      "notes": "Mixpanel uses a distinct_id for user identification. Disable autotrack if not needed."
+    },
+    {
+      "package": "intercom_flutter",
+      "displayName": "Intercom",
+      "description": "In-app customer messaging and support",
+      "dataCategories": [
+        {
+          "appStoreCategory": "Contact Info",
+          "appStoreDataType": "Email Address",
+          "playStoreCategory": "Personal info",
+          "playStoreDataType": "Email address",
+          "linkedToIdentity": true,
+          "usedForTracking": false,
+          "purpose": ["app_functionality"]
+        },
+        {
+          "appStoreCategory": "User Content",
+          "appStoreDataType": "Customer Support",
+          "playStoreCategory": "Messages",
+          "playStoreDataType": "In-app messages",
+          "linkedToIdentity": true,
+          "usedForTracking": false,
+          "purpose": ["app_functionality"]
+        }
+      ],
+      "requiresPrivacyManifest": false,
+      "citationUrl": "https://www.intercom.com/legal/privacy",
+      "notes": "Intercom stores conversation history. Review data retention settings in the Intercom dashboard."
+    },
+    {
+      "package": "purchases_flutter",
+      "displayName": "RevenueCat",
+      "description": "In-app purchase and subscription management",
+      "dataCategories": [
+        {
+          "appStoreCategory": "Purchases",
+          "appStoreDataType": "Purchase History",
+          "playStoreCategory": "Financial info",
+          "playStoreDataType": "Purchase history",
+          "linkedToIdentity": true,
+          "usedForTracking": false,
+          "purpose": ["app_functionality", "analytics"]
+        },
+        {
+          "appStoreCategory": "Identifiers",
+          "appStoreDataType": "Device ID",
+          "playStoreCategory": "Device or other identifiers",
+          "playStoreDataType": "Device or other identifiers",
+          "linkedToIdentity": false,
+          "usedForTracking": false,
+          "purpose": ["analytics"]
+        }
+      ],
+      "requiresPrivacyManifest": false,
+      "citationUrl": "https://www.revenuecat.com/privacy",
+      "notes": "RevenueCat stores receipt and subscription status. Uses Anonymous ID if no user_id is provided."
+    },
+    {
+      "package": "onesignal_flutter",
+      "displayName": "OneSignal Push",
+      "description": "Push notification delivery service",
+      "dataCategories": [
+        {
+          "appStoreCategory": "Identifiers",
+          "appStoreDataType": "Device ID",
+          "playStoreCategory": "Device or other identifiers",
+          "playStoreDataType": "Device or other identifiers",
+          "linkedToIdentity": false,
+          "usedForTracking": false,
+          "purpose": ["app_functionality"]
+        }
+      ],
+      "requiresPrivacyManifest": false,
+      "citationUrl": "https://onesignal.com/privacy_policy",
+      "notes": "OneSignal uses a Player ID / Subscription ID. Disable location-based targeting if not needed."
+    },
+    {
+      "package": "braze_plugin",
+      "displayName": "Braze",
+      "description": "Customer engagement, push, and analytics platform",
+      "dataCategories": [
+        {
+          "appStoreCategory": "Contact Info",
+          "appStoreDataType": "Email Address",
+          "playStoreCategory": "Personal info",
+          "playStoreDataType": "Email address",
+          "linkedToIdentity": true,
+          "usedForTracking": false,
+          "purpose": ["advertising", "analytics"]
+        },
+        {
+          "appStoreCategory": "Usage Data",
+          "appStoreDataType": "Product Interaction",
+          "playStoreCategory": "App activity",
+          "playStoreDataType": "App interactions",
+          "linkedToIdentity": true,
+          "usedForTracking": false,
+          "purpose": ["advertising", "analytics"]
+        }
+      ],
+      "requiresPrivacyManifest": true,
+      "citationUrl": "https://www.braze.com/company/legal/privacy",
+      "notes": "Braze requires ATT review on iOS. Review exactly which attributes you pass via changeUser()."
+    }
+  ]
+}
